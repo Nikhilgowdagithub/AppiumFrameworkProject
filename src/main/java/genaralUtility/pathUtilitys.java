@@ -13,5 +13,7 @@ public interface pathUtilitys {
 	String iosAppPath = ".//MobileAutomation//src//test//resources//UIKitCatalog.app";
 
 	String jsonFilePath = ".//AppiumFrameworkProject//src//test//resources//ecommerseData.json";
+	
+	String extentReportFilePath = ".//AppiumFrameworkProject//reports//index.html";
 
 }

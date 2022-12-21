@@ -27,11 +27,13 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 public class AppiumUtility implements pathUtilitys {
 	public AppiumDriverLocalService service;
 	public Properties praperty;
+	public ExtentReports extent;
 
 	public AppiumDriverLocalService startAppiumServer() throws IOException {
 
-		service = new AppiumServiceBuilder().withAppiumJS(new File(appiumJSNodePath))
-				.withIPAddress(praperty.getProperty("IPaddress"))
+		String ipAddress = System.getProperty("ipaddress") != null ? System.getProperty("ipaddress")
+				: praperty.getProperty("IPaddress");
+		service = new AppiumServiceBuilder().withAppiumJS(new File(appiumJSNodePath)).withIPAddress(ipAddress)
 				.usingPort(Integer.parseInt(praperty.getProperty("port"))).build();
 		// bcz all the data we get from property will be in String so conveting string
 		// inti integer
@@ -86,11 +88,11 @@ public class AppiumUtility implements pathUtilitys {
 
 	public ExtentReports extentReports(String testCaseName) {
 
-		ExtentSparkReporter reporter = new ExtentSparkReporter(".//AppiumFrameworkProject//reports//index.html");
+		ExtentSparkReporter reporter = new ExtentSparkReporter(extentReportFilePath);
 		reporter.config().setReportName("Appium Automation");
 		reporter.config().setDocumentTitle("Test Results");
 
-		ExtentReports extent = new ExtentReports();
+		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 		extent.setSystemInfo("Tester", "Nikhil");
 		return extent;

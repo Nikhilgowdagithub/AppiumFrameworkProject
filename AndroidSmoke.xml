@@ -2,6 +2,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 
+	<groups>
+		<run>
+			<include name="smoke" />
+		</run>
+	</groups>
+
 	<listeners>
 		<listener
 			class-name="AppiumFrameworkProject.src/main/java/utility.Listeners" />

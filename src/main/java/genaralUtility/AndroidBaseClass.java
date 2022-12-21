@@ -17,7 +17,7 @@ public class AndroidBaseClass extends AppiumUtility {
 	public AppiumDriverLocalService server;
 	public FormPagePOM fillForm;
 
-	@BeforeTest
+	@BeforeTest(alwaysRun = true)
 	public void configerAppium() throws IOException {
 
 		startAppiumServer();
@@ -34,7 +34,7 @@ public class AndroidBaseClass extends AppiumUtility {
 
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun = true)
 	public void tearDown() {
 
 		driver.quit();

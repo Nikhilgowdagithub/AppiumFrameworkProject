@@ -13,7 +13,7 @@ import genaralUtility.AndroidBaseClass;
 import pageObjectModel.Android.PraductCathalogPOM;
 
 public class FillFormTestCase extends AndroidBaseClass {
-	@Test(dataProvider = "data")
+	@Test(dataProvider = "data", groups = "smoke")
 	public void FillForm(HashMap<String, String> input) {
 
 		fillForm.enterName(input.get("name"));
@@ -26,7 +26,7 @@ public class FillFormTestCase extends AndroidBaseClass {
 		Assert.assertEquals(lastPageProduct, input.get("productName"));
 	}
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void preSetup() {
 		fillForm.setActivityHome();
 		/*

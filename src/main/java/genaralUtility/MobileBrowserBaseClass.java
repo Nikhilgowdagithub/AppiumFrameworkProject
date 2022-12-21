@@ -15,7 +15,7 @@ public class MobileBrowserBaseClass extends AppiumUtility {
 	public AndroidDriver driver;
 	public AppiumDriverLocalService server;
 
-	@BeforeTest
+	@BeforeTest(alwaysRun = true)
 	public void configerAppium() throws IOException {
 
 		server = startAppiumServer();
@@ -36,7 +36,7 @@ public class MobileBrowserBaseClass extends AppiumUtility {
 
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun = true)
 	public void tearDown() {
 
 		driver.quit();

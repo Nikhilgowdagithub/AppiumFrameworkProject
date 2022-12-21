@@ -18,7 +18,7 @@ public class IOSBaseClass extends AppiumUtility {
 	public AppiumDriverLocalService server;
 	public HomePagePOM homePage;
 
-	@BeforeTest
+	@BeforeTest(alwaysRun = true)
 	public void configerAppium() throws IOException {
 
 		server = startAppiumServer();
@@ -34,7 +34,7 @@ public class IOSBaseClass extends AppiumUtility {
 		homePage = new HomePagePOM(driver);
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun = true)
 	public void tearDown() {
 
 		driver.quit();
